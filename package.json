@@ -1,0 +1,10 @@
+{
+  "name": "Sample",
+  "description": "Sample application",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "express": "~4.10.0",
+    "pg": "^4.4.1",
+    "nodemon": "1.4.1"
+  }
+}
