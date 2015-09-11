@@ -1,1 +1,15 @@
 @import "_bootstrap";
+html, body, #view, .container {
+	height: 100%;
+	width: 100%;
+}
+
+#view {
+	padding-top: 50px;
+}
+
+.movie-thumbnail {
+	padding: 0;
+	width: 20vw;
+	height: 20vw;
+}
