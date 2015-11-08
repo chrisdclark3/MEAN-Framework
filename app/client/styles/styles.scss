@@ -4,12 +4,46 @@ html, body, #view, .container {
 	width: 100%;
 }
 
-#view {
-	padding-top: 50px;
+body {
+   background: #dddddd;
 }
 
-.movie-thumbnail {
-	padding: 0;
-	width: 20vw;
-	height: 20vw;
+$img-width: 1024px;
+$img-height: 550px;
+$canvas-width: 400px;
+$canvas-height: 400px;
+
+.parcel-snapshot {
+   position: relative;
+   display: block;
+   height: $img-height;
+   width: $img-width;
 }
+
+.publish-system {
+   position: absolute;
+   z-index: 2;
+   top: 12px;
+   right: 15px;
+}
+
+#canvas {
+   z-index: 2;
+   border: 5px solid blue;
+   width: $canvas-width;
+   height: $canvas-height;
+   position: absolute;
+   left: ($img-width - $canvas-width) / 2;
+   top: ($img-height - $canvas-height) / 2;
+}
+
+#parcel-img {
+   z-index: 1;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: $img-width;
+   height: $img-height;
+   border: 2px solid black;
+}
+
