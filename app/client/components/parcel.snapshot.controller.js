@@ -1,49 +1,67 @@
 (function() {
   'use strict'
 
-  function ParcelSnapshotController($scope) {
+  function ParcelSnapshotController($scope, $modal, $window, Snapshot, $rootScope) {
 
     var canvas,
     snapshot,
     parcel,
     context,
-    iH,
-    iW,
-    cH,
-    cW,
     snapshot
+    $scope.isDraggable = true
+
+    $scope.snapshotBtnText = "Take system snapshot"
 
     $scope.setCanvasCxt = function() {
       console.log("setting canvas context...")
-
-      iH = 500
-      iW = 1000
-      cH = 400
-      cW = 400
       canvas = document.getElementById("canvas")
       parcel = document.getElementById("parcel-img")
-      parcel.crossOrigin = "Anonymous";
-      snapshot = document.getElementById("snapshot-img")
-
       context = canvas.getContext("2d")
-      var sx = (iW - cW) / 2
-      var sy = (iH - cH) / 2
-      context.drawImage(parcel, sx, sy, cW, cH, 0, 0, iW, iH)
-      console.log("setting snapshot...", context)
+      context.drawImage(parcel,
+                        $rootScope.snapshot.xSkew,
+                        $rootScope.snapshot.ySkew,
+                        $rootScope.snapshot.imgWidth,
+                        $rootScope.snapshot.imgHeight,
+                        0,
+                        0,
+                        $rootScope.snapshot.imgWidth,
+                        $rootScope.snapshot.imgHeight
+                        )
       $scope.setSnapshot(canvas)
     }
 
     $scope.setSnapshot = function(canvas) {
-      console.log("CANVAS", canvas)
-      var imgUrl = canvas.toDataURL()
-      snapshot.src = url
-      $scope.$apply()
+      $scope.previewImageUrl = canvas.toDataURL()
+      console.log("previewImageUrl", $scope.previewImageUrl)
+      console.log("canvas", canvas);
+      document.getElement
+      $scope.open()
     }
 
+    $scope.cancelSnapshot = function () {
+      $scope.close()
+    }
 
+    $scope.acceptSnapshot = function () {
+      $scope.snapshotThumbnail = $scope.previewImageUrl
+      $scope.snapshotBtnText = "Publish system"
+      document.getElementById('publish-system').setAttribute('class','btn btn-primary on')
+      $scope.close();
+    }
+
+    $scope.open = function() {
+        $scope.modalInstance = $modal.open({
+            templateUrl: 'views/snapshot-preview.html',
+            scope: $scope
+        });
+    };
+
+    $scope.close = function() {
+        $scope.modalInstance.close();
+    };
   }
 
-  ParcelSnapshotController.$inject = ['$scope']
+  ParcelSnapshotController.$inject = ['$scope', '$modal', '$window', 'Snapshot', '$rootScope']
 
   app.controller('ParcelSnapshotController', ParcelSnapshotController)
 

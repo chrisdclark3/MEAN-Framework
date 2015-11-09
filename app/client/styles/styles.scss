@@ -1,4 +1,14 @@
 @import "_bootstrap";
+
+
+$white:               #FFFFFF;
+$orange:              #F26322;
+$grey:                #CCCCCC;
+$charcoal:            #5C6670;
+$navy:                #333E48;
+$teal:                #96BBC3;
+$seafoam:             #E9F1F3;
+
 html, body, #view, .container {
 	height: 100%;
 	width: 100%;
@@ -8,42 +18,174 @@ body {
    background: #dddddd;
 }
 
-$img-width: 1024px;
-$img-height: 550px;
+$img-width: 1000px;
+$img-height: 500px;
 $canvas-width: 400px;
 $canvas-height: 400px;
 
 .parcel-snapshot {
-   position: relative;
+   padding: 0;
+   margin: 0;
    display: block;
    height: $img-height;
    width: $img-width;
+   position: relative;
 }
 
-.publish-system {
-   position: absolute;
-   z-index: 2;
-   top: 12px;
-   right: 15px;
+.modal {
+   postion: relative;
+   display: block;
+   padding-left: auto;
+   padding-right: auto;
+   * {
+    overflow: hidden;
+   }
+   h4 {
+      position: absolute;
+      z-index: 2000;
+      font-size: 28px;
+      text-align: center;
+      color: white;
+   }
+   .modal-wrapper {
+      border-radius: 5px;
+   }
+   .modal-body {
+      overflow: hidden;
+      padding: 0;
+   }
+   .modal-footer {
+      position: absolute;
+      overflow: hidden;
+      z-index: 2000;
+      bottom: 0;
+      .btn {
+        display: inline-block;
+        position: relative;
+      }
+   }
+}
+
+#preview-img {
+   z-index: 1999;
+   display: block;
+   overflow: hidden;
+}
+
+#publish-system {
+   z-index: 3;
+   position: relative;
+   float: right;
+   margin: 15px;
 }
 
 #canvas {
    z-index: 2;
-   border: 5px solid blue;
-   width: $canvas-width;
-   height: $canvas-height;
+   padding: 0;
+   margin: 0;
    position: absolute;
-   left: ($img-width - $canvas-width) / 2;
-   top: ($img-height - $canvas-height) / 2;
+   visibility: hidden;
+}
+
+.snapshot-thumbnail {
+   z-index: 10;
+   position: relative;
+   width: 50px;
+   height: 50px;
+   margin: 15px;
+   margin-right: 5px;
+   float: right;
+}
+
+.canvas-wrapper {
+   height: $img-height !important;
+   width: $img-width !important;
+   position: relative;
+   display: block;
+}
+
+.canvas-boundary {
+   z-index: 3;
+   padding: 0;
+   margin: 0;
+   outline: 2px solid white;
+   position: absolute;
+   top: 50px;
+   left: 300px;
+   height: 400px;
+   width: 400px;
 }
 
 #parcel-img {
    z-index: 1;
+   padding: 0;
+   margin: 0;
+   position: absolute;
+   width: $img-width !important;
+   height: $img-height !important;
+   border: 2px solid black;
+}
+
+.btn-primary {
+  background-color: $seafoam;
+  border: 1px solid $orange;
+  color: $charcoal;
+  padding: 15px;
+
+  &:active, &:hover {
+    background-color: $orange;
+    border: 1px solid $orange;
+    color: $white;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.top-left {
+   z-index: 15;
    position: absolute;
    top: 0;
    left: 0;
-   width: $img-width;
-   height: $img-height;
-   border: 2px solid black;
+   width: 50px;
+   height: 50px;
+   border: 2px solid white;
 }
+
+.top-right {
+   z-index: 15;
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 50px;
+   height: 50px;
+   border: 2px solid white;
+}
+
+.bottom-left {
+   z-index: 15;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 50px;
+   height: 50px;
+   border: 2px solid white;
+}
+
+.bottom-right {
+   z-index: 15;
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   width: 50px;
+   height: 50px;
+   border: 2px solid white;
+}
+
+.btn-primary.on {
+  background-color: $orange;
+  border: 1px solid $orange;
+  color: $white;
+}
+
 

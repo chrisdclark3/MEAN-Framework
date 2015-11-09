@@ -1,4 +1,4 @@
-app = angular.module('app', ['ngRoute','LocalStorageModule']);
+app = angular.module('app', ['ngRoute','LocalStorageModule','ui.bootstrap']);
 
 app.constant('HOST', 'http://localhost:6789');
 
