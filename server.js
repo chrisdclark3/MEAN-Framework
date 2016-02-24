@@ -4,4 +4,4 @@ var port = process.env.PORT || 6789;
 var server = require('http').createServer(app);
     server.listen(port);
 
-app.use(express.static('./app/client'));
+app.use(express.static('./app'));
